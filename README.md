@@ -5,7 +5,11 @@ Utilizando JavaScript Vanilla o projeto tem o objetivo de usar a funcionalidade 
 ```
 npm install
 npm run dev
+
+# Abra o console (F12) e certifique-se que o 'network' está configurado para 'Slow 3G'
+# para simular uma rede lenta e melhor visualização da funcionalidade.
 ```
+
 
 # Conceitos aprendidos
 * Fetch API
