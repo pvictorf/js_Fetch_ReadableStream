@@ -38,7 +38,7 @@ export function fetchAudioStream(src, options = {onProgress: () => {}, onFinishe
               return;   
             }
             controller.enqueue(chunk.value);
-            options?.onProgress(progressHandler(chunk.value.byteLength, total));
+            options?.onProgress(progressHandler(chunk.value.byteLength, streamBytes.total));
             push();
           }) 
         }
