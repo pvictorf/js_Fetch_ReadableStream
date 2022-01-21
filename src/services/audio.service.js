@@ -13,14 +13,14 @@ export function fetchAudioStream(src, options = {onProgress: () => {}, onFinishe
   .then(body => readChunks(body.getReader()))
   .then(stream => createUrlFromStream(stream))
 
-  function progressHandler(bytesLoaded, totalBytes) {
-    streamBytes.loaded += bytesLoaded;
+  function progressHandler(currentBytes, totalBytes) {
+    streamBytes.loaded += currentBytes;
     
     const percentage = Math.round( (streamBytes.loaded * 100) / totalBytes )
     
     return {
-      loaded: streamBytes.loaded,
-      bytesLoaded,
+      bytesLoaded: streamBytes.loaded,
+      currentBytes,
       totalBytes,
       percentage,   
     }
