@@ -6,3 +6,10 @@ Utilizando JavaScript Vanilla o projeto tem o objetivo de usar a funcionalidade 
 npm install
 npm run dev
 ```
+
+# Conceitos aprendidos
+* Fetch API
+* ReadableStream
+* Clousures
+* Imutabilidade
+* Calculo de Porcentagem (Os bytes X são quantos porcento de um total Y de bytes?)
