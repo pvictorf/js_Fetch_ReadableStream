@@ -16,7 +16,7 @@ export function fetchAudioStream(src, options = {onProgress: () => {}, onFinishe
   function progressHandler(currentBytes, totalBytes) {
     streamBytes.loaded += currentBytes;
     
-    // Os bytes 'loaded' são quantos porcento do total de bytes?
+    // Os bytes carregados (loaded) são quantos porcento do total de bytes (totalBytes)?
     const percentage = Math.round( (streamBytes.loaded * 100) / totalBytes )
     
     return {
