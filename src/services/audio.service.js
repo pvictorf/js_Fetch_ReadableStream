@@ -13,22 +13,8 @@ export function fetchAudioStream(src, options = {onProgress: () => {}, onFinishe
   .then(body => readChunks(body.getReader()))
   .then(stream => createUrlFromStream(stream))
 
-  function progressHandler(currentBytes, totalBytes) {
-    streamBytes.loaded += currentBytes;
-    
-    // Os bytes carregados (loaded) são quantos porcento do total de bytes (totalBytes)?
-    const percentage = Math.round( (streamBytes.loaded * 100) / totalBytes )
-    
-    return {
-      bytesLoaded: streamBytes.loaded,
-      currentBytes,
-      totalBytes,
-      percentage,   
-    }
-  }
-
+  
   function readChunks(reader) {
-
     return new ReadableStream({
       start(controller) {
         function push() {
@@ -48,6 +34,20 @@ export function fetchAudioStream(src, options = {onProgress: () => {}, onFinishe
     })
   }
   
+  function progressHandler(currentBytes, totalBytes) {
+    streamBytes.loaded += currentBytes;
+    
+    // Os bytes carregados (loaded) são quantos porcento do total de bytes (totalBytes)?
+    const percentage = Math.round( (streamBytes.loaded * 100) / totalBytes )
+    
+    return {
+      bytesLoaded: streamBytes.loaded,
+      currentBytes,
+      totalBytes,
+      percentage,   
+    }
+  }
+    
   function createUrlFromStream(stream) {
     const response = new Response(stream);
     return response.blob().then(blob => URL.createObjectURL(blob));
